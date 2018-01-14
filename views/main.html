@@ -1,0 +1,46 @@
+﻿<div ng-controller="SearchListController">
+    <div class="search-header">
+        <div class="row bg-yellow margin-0">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <h1 class="clr-light-blue">Rooms Booking</h1>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="date" class="form-control input-datepicker margin-top-10 margin-bottom-10 bg-orange clr-white"
+                       ng-model="searchDate" value="{{searchDate}}" ng-change="updateSearchDateString()" />
+            </div>
+        </div>
+        <div class="search-container row margin-0 padding-top-10 bg-mauve">
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <label class="label-filter clr-white font-weight-bold">Filter:</label>
+                <!-- Create a binding between the searchValue model and the input field -->
+                <input type="text" ng-model="searchValue" placeholder="Room Name" class="input-filter form-control bg-orange clr-white" />
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="checkbox">
+                    <label class="clr-white font-weight-bold"><input type="checkbox" ng-model="searchAvailable" /> Available now</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-body bg-light-blue">
+        <ul class="list-rooms">
+            <!-- Render a li element for every room in the rooms array -->
+            <li class="animate-fade-in bg-white" ng-repeat="r in rooms | filter: {available: searchAvailable} | filter: {date: searchDateString} | searchFilter:searchValue">
+                <a ng-href="#!details/{{r.roomId}}">
+                    <div class="room-item cursor-pointer" data-roomid="{{r.roomId}}">
+                        <div class="row margin-0">
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <h2 class="margin-top-5 clr-red">{{r.title}}</h2>
+                                <h4 class="margin-top-10 clr-blue">Level: {{r.level}}</h4>
+                                <p class="clr-green">date: {{r.date}}</p>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+                                <img src="https://www.thelocal.de/userdata/images/article/4034f1e20c5bec00c3ac494a5b28a344c3c369123455c8a5656a9b47c4cbee87.jpg" class="list-item-image" />
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

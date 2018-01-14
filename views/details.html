@@ -1,0 +1,49 @@
+<div ng-controller="RoomDetailsController">
+    <div class="search-header">
+        <div class="row bg-yellow margin-0">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <h1 class="clr-light-blue">Room details</h1>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <a class="btn btn-primary pull-right margin-top-10" href="#!">< Back</a>
+            </div>
+        </div>
+    </div>
+    <div class="row bg-white margin-0">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <h2 class="clr-red">{{room.title}}</h2>
+            <p>{{room.description}}</p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <h2 class="clr-green">Equipments:</h2>
+            <ol>
+                <li ng-repeat="e in room.equipments">{{e.name}}</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row bg-white margin-0">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h2 class="clr-mauve">Photo Gallery</h2>
+            <ul class="room-photos-list">
+                <li ng-repeat="p in room.photos"><img src="{{p.src}}" /></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row bg-white margin-0">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h2 class="clr-violet">Time Availability</h2>
+            <div class="canvas-time-availability" roomtimebooking>
+            </div>
+            <div id="hourStepStatus" class="hour-step-status bg-light-blue clr-white">
+                Select an hour step above to check status
+            </div>
+        </div>
+    </div>
+    <div class="space-10 bg-white"></div>
+    <div class="row bg-white margin-0">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <a class="btn btn-success pull-right" href="#!book/{{room.roomId}}">Book Room ></a>
+        </div>
+    </div>
+    <div class="space-10 bg-white"></div>
+</div>

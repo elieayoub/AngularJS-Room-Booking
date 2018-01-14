@@ -1,45 +1,41 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AngularJS Room Booking</title>
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Our custom CSS -->
+    <link href="app/css/style.css" rel="stylesheet" />
+</head>
 
-	<head>
-		<meta charset="utf-8"/>
-		<title>AngularJS Books Search List</title>
-		<link href="style.css" rel="stylesheet" />
-	</head>
+<body ng-app="RoomBookingApp" class="bg-silver">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
 
-	<body ng-app="SearchListApp" ng-controller="SearchListController">
-
-		<div class="search-header">
-			<h1>Books List Search:</h1>
-			<!-- Create a binding between the searchValue model and the input field -->
-			<input type="text" ng-model="searchValue" placeholder="Search for a Book/Author here..." class="search-input" />
-		</div>
-
-		<div class="search-body">
-			<ul class="list-books">
-				<!-- Render a li element for every book in the books array.
-					 The custom search filter "searchFilter" takes the value of the
-					 searchValue model from the search input field as an argument.
-				 -->
-				<li ng-repeat="b in books | searchFilter:searchValue">
-					<h2>{{b.title}}</h2>
-					<h4>{{b.author}}</h4>
-				</li>
-			</ul>
-		</div>
-
-		<div class='search-footer'>
-			<p><b>&nbsp; Add New Book/Author:<b></p>
-			<form>
-				<input type="text" placeholder="Write Author" ng-model="newBookAuthor" required /> 
-				<input type="text" placeholder="Write Book Title"  ng-model="newBookTitle" required /> 
-				<button ng-click="addBookItem()">Add</button>
-			<form>
-		</div>
-
-		<!-- Include AngularJS from Google's CDN -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-		<!-- Our custom JS -->
-		<script src="script.js"></script>
-	</body>
+    <!-- Include AngularJS from Google's CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <!-- Angular Route -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- App -->
+    <script src="app/js/app.js"></script>
+    <!-- Controllers -->
+    <script src="controllers/SearchListController.js"></script>
+    <script src="controllers/RoomDetailsController.js"></script>
+    <script src="controllers/RoomBookingController.js"></script>
+    <!-- Filters -->
+    <script src="filters/SearchFilter.js"></script>
+    <!-- Directives -->
+    <script src="directives/roomtimebooking.js"></script>
+</body>
 </html>
